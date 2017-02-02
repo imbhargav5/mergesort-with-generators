@@ -29,7 +29,7 @@ function combine(arr1,arr2){
 }
 
 function _mergesort(arr, startIndex , endIndex ){
-  console.log('mergesort',startIndex,endIndex);
+  //console.log('mergesort',startIndex,endIndex);
   if(endIndex - startIndex < 0 ){
     return [];
   }

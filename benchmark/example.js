@@ -1,5 +1,5 @@
-import mergesort from '../src';
-
+const mergesort = require('../dist');
+const mergesort_without_generator  = require('../dist/without_generator');
 var timer = function(name) {
     var start = new Date();
     return {
@@ -11,11 +11,15 @@ var timer = function(name) {
     };
 };
 const arr = Array.from({length:11000}).map((x,i)=>parseInt(Math.random()*100));
-const t1 = timer('mergesort');
-const res = mergesort(arr);
+const t1 = timer('mergesort with generators');
+mergesort(arr);
 t1.stop();
-// console.log(arr);
-// console.log(res);
-const t2 = timer('basic sort');
-arr.sort();
+
+//Without generators
+const t2 = timer('mergesort without generators');
+mergesort_without_generator(arr);
 t2.stop();
+
+const t3 = timer('basic sort');
+arr.sort();
+t3.stop();
