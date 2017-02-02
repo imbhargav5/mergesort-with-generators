@@ -18,7 +18,7 @@ function* _mergesort(arr, startIndex , endIndex ){
      }
   }
   else{
-    var diff = endIndex-startIndex;
+    const diff = endIndex-startIndex;
     let mid;
     if(diff % 2 == 0){
       mid = (endIndex+startIndex)/2;
@@ -26,8 +26,8 @@ function* _mergesort(arr, startIndex , endIndex ){
       mid = (endIndex - 1 +startIndex)/2;
     }
     //console.log('mergesort',startIndex,mid,endIndex);
-    var g1 = _mergesort(arr,startIndex,mid);
-    var g2 = _mergesort(arr,mid+1,endIndex);
+    const g1 = _mergesort(arr,startIndex,mid);
+    const g2 = _mergesort(arr,mid+1,endIndex);
     yield* combine(g1,g2);
   }
 }

@@ -24,7 +24,7 @@
     "babel-preset-stage-2": "^6.18.0",
     "babel-register": "^6.22.0",
     "eslint": "^3.9.1",
-    "rimraf": "^2.5.4",
+    "rimraf": "^2.5.4"
   },
   "ava": {
     "source": [

@@ -2,8 +2,8 @@ module.exports = function* combine(iter1,iter2){
   // console.log(typeof g1);
   // var iter1 = g1();
   // var iter2  = g2();
-  var i = iter1.next();
-  var j = iter2.next();
+  let i = iter1.next();
+  let j = iter2.next();
 
   try{
     while(!i.done || !j.done){
@@ -12,7 +12,7 @@ module.exports = function* combine(iter1,iter2){
         //console.log('i is done');
         //console.log(j);
         yield j.value;
-        var res = yield* iter2;
+        yield* iter2;
         //console.log(res);
         break;
       }
