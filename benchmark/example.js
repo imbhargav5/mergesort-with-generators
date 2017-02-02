@@ -1,5 +1,5 @@
-const mergesort = require('../dist');
-const mergesort_without_generator  = require('../dist/without_generator');
+const mergesort = require('../src');
+const mergesort_without_generator  = require('../src/without_generator');
 var timer = function(name) {
     var start = new Date();
     return {
