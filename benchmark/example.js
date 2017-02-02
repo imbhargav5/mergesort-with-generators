@@ -1,25 +1,25 @@
+const Benchmark = require('benchmark');
 const mergesort = require('../src');
 const mergesort_without_generator  = require('../src/without_generator');
-var timer = function(name) {
-    var start = new Date();
-    return {
-        stop: function() {
-            var end  = new Date();
-            var time = end.getTime() - start.getTime();
-            console.log('Timer:', name, 'finished in', time, 'ms');
-        }
-    };
-};
 const arr = Array.from({length:11000}).map((x,i)=>parseInt(Math.random()*100));
-const t1 = timer('mergesort with generators');
-mergesort(arr);
-t1.stop();
+const suite = new Benchmark.Suite;
 
-//Without generators
-const t2 = timer('mergesort without generators');
-mergesort_without_generator(arr);
-t2.stop();
-
-const t3 = timer('basic sort');
-arr.sort();
-t3.stop();
+// add tests
+suite.add('mergesort with generators', function() {
+  mergesort(arr);
+})
+.add('mergesort without generators', function() {
+  mergesort_without_generator(arr);
+})
+.add('basic sort', function() {
+  arr.sort();
+})
+// add listeners
+.on('cycle', function(event) {
+  console.log(String(event.target));
+})
+.on('complete', function() {
+  console.log('Fastest is ' + this.filter('fastest').map('name'));
+})
+// run async
+.run({ 'async': true });
