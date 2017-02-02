@@ -1,4 +1,4 @@
-import mergesort from './';
+import mergesort from '../src';
 
 var timer = function(name) {
     var start = new Date();
@@ -10,13 +10,12 @@ var timer = function(name) {
         }
     };
 };
-const arr = Array.from({length:7000}).map((x,i)=>parseInt(Math.random()*100));
+const arr = Array.from({length:11000}).map((x,i)=>parseInt(Math.random()*100));
 const t1 = timer('mergesort');
-mergesort(arr);
+const res = mergesort(arr);
 t1.stop();
-
-
-
+// console.log(arr);
+// console.log(res);
 const t2 = timer('basic sort');
 arr.sort();
 t2.stop();
